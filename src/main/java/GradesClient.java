@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class GradesClient {
-
     private static final int READ = 1;
     private static final int ADD = 2;
     private static final int REMOVE = 3;
@@ -10,6 +9,7 @@ public class GradesClient {
     private static final int SORT = 6;
     private static final int AVERAGE = 7;
     private static final int EXIT = 8;
+    
     private static Scanner keyboard = new Scanner(System.in);
     private Grades grades = new Grades();
 
