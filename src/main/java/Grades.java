@@ -7,10 +7,6 @@ public class Grades {
         // TODO Default constructor initializes the empty grades ArrayList.
     }
 
-    public Grades(String fileName) {
-        // TODO constructs the grades ArrayList and adds grades from file into the field
-    }
-
     public void readGrades(String fileName) {
         // TODO uses the parameter filename to open the file and read in the grades from the file
     }
