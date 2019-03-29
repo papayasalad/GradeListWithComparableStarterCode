@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Grades {
-    private List<Grade> grades;
+    private List<String> grades;
 
     public Grades() {
         // TODO Default constructor initializes the empty grades ArrayList.
