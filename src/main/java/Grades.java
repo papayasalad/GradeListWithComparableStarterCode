@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Grades {
-    private List<Double> grades;
+    private List<Grade> grades;
 
     public Grades() {
         // TODO Default constructor initializes the empty grades ArrayList.
@@ -34,6 +34,16 @@ public class Grades {
 
     public void printSortedGrades() {
         // TODO Use Collections.sort to print the sorted grades to screen
+    }
+
+    public void printGradeBreakdown() {
+        // TODO print the number of students who got A, B, C, D, and F
+        // e.g. A: 7, B: 5, C: 2, D: 1, F: 1
+    }
+
+    public String getStudentWithHighestGrade() {
+        // TODO return the student who got the highest grade
+        return null;
     }
 
     public String toString() {
