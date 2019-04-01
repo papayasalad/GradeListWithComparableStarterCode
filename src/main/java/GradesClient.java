@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class GradesClient {
@@ -13,7 +14,7 @@ public class GradesClient {
     private static Scanner keyboard = new Scanner(System.in);
     private Grades grades = new Grades();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         int choice = -1;
         GradesClient client = new GradesClient();
 
@@ -70,7 +71,7 @@ public class GradesClient {
 
     }
 
-    private void readGrades() {
+    private void readGrades() throws FileNotFoundException {
         System.out.print("Enter a filename to read the grades from:");
         String fileName = keyboard.next();
 
