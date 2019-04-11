@@ -9,6 +9,10 @@ public class Grades {
         grades = new ArrayList<>();
     }
 
+    public List<Double> getGrades() {
+        return grades;
+    }
+
     public void readGrades(String fileName) throws FileNotFoundException {
         Scanner scan = new Scanner(new File(fileName));
         while (scan.hasNextLine()) {
@@ -43,13 +47,14 @@ public class Grades {
         return grades.removeAll(Collections.singleton(grade));
     }
 
+    // Collections.sort sorts the input list as a side-effect, which I didn't prefer
+    // So I created a copy and sorted that.
+    // You could also just sort grades.
     public void printSortedGrades() {
         List<Double> gradesCopy = new ArrayList<>(grades);
         Collections.sort(gradesCopy);
 
-        for (double grade : gradesCopy) {
-            System.out.print(grade + " ");
-        }
+        System.out.println(gradesCopy);
     }
 
     public void printGradeBreakdown() {
@@ -62,8 +67,22 @@ public class Grades {
         return null;
     }
 
+    // Simplest version of toString() for this method
+//    public String toString() {
+//        return grades.toString();
+//    }
+
+    // Using StringBuilder rather than less efficient string concatentation
     public String toString() {
-        return Arrays.toString(grades.toArray());
+        StringBuilder result = new StringBuilder("[");
+        for (int i = 0; i < grades.size() - 1; i++) {
+            result.append(grades.get(i));
+            result.append(", ");
+        }
+        result.append(grades.get(grades.size() - 1));
+        result.append("]");
+
+        return result.toString();
     }
 
 }

@@ -17,6 +17,16 @@ public class Grade {
         return null;
     }
 
+    public double getGrade() {
+        // TODO getter for the grade field
+        return 0.0;
+    }
+
+    public String toString() {
+        // TODO return a useful representation of the object, including the name and grade fields
+        return null;
+    }
+
     public int compareTo(Grade other) {
         // TODO implement compareTo.
         // Don't forget anything else that might be missing in this class for this function to be called correctly.
