@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class GradesClient {
@@ -9,7 +10,9 @@ public class GradesClient {
     private static final int DISPLAY = 5;
     private static final int SORT = 6;
     private static final int AVERAGE = 7;
-    private static final int EXIT = 8;
+    private static final int BREAKDOWN = 8;
+    private static final int HIGHEST = 9;
+    private static final int EXIT = 10;
 
     private static Scanner keyboard = new Scanner(System.in);
     private Grades grades = new Grades();
@@ -22,6 +25,10 @@ public class GradesClient {
             displayMenu();
 
             System.out.print("Enter your numerical choice: ");
+            while (!keyboard.hasNextInt()) {
+                keyboard.next();
+                System.out.println("You did not enter a valid number: try enter again.");
+            }
             choice = Integer.parseInt(keyboard.next());
 
             switch (choice) {
@@ -46,6 +53,12 @@ public class GradesClient {
                 case AVERAGE:
                     client.calcAverage();
                     break;
+                case BREAKDOWN:
+                    client.printGradeBreakDown();
+                    break;
+                case HIGHEST:
+                    client.findStudentHighest();
+                    break;
                 default:
                     System.out.println("That choice is not valid " + choice);
             }
@@ -64,7 +77,9 @@ public class GradesClient {
         System.out.println("5. Display grades");
         System.out.println("6. Sort grades");
         System.out.println("7. Calculate average");
-        System.out.println("8. Exit");
+        System.out.println("8. Display breakdown of grades");
+        System.out.println("9. Get student name with highest grade");
+        System.out.println("10. Exit");
 
         System.out.println("*************************************");
         System.out.println();
@@ -85,12 +100,15 @@ public class GradesClient {
     }
 
     private void addGrade() {
-        System.out.print("Enter a grade to add:");
+        System.out.print("Enter a student name to add: ");
+        String name = keyboard.next();
+        System.out.print("Adding a student " + name + "\nEnter a student grade to add: ");
         String number = keyboard.next();
         try {
             double grade = Double.parseDouble(number);
             System.out.println("Adding grade " + grade);
-            grades.addGrade(grade);
+            Grade newGrade = new Grade(name, grade);
+            grades.addGrade(newGrade);
         } catch (NumberFormatException e) {
             System.out.println("You did not enter a valid grade: " + e.getMessage());
         }
@@ -125,6 +143,15 @@ public class GradesClient {
 
     private void displaySorted() {
         grades.printSortedGrades();
+    }
+
+    private void printGradeBreakDown() {
+        System.out.println("Here is a breakdown of grades.");
+        grades.printGradeBreakdown();
+    }
+
+    private void findStudentHighest() {
+        System.out.println(grades.getStudentWithHighestGrade() + " has the highest score.");
     }
 
 }
