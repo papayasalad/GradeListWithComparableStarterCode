@@ -33,7 +33,7 @@ public class Grades {
         return total / grades.size();
     }
 
-    public Double dropLowest() {
+    public double dropLowest() {
         Grade lowest = grades.get(0);
         double minGrade = grades.get(0).getGrade();
         for (Grade grade : grades) {
@@ -74,8 +74,8 @@ public class Grades {
     public void printGradeBreakdown() {
         // e.g. A: 7, B: 5, C: 2, D: 1, F: 1
         int[] cnt = new int[5];
-        for (int i = 0; i < grades.size(); i++) {
-            String letter = grades.get(i).toLetterGrade();
+        for (Grade grade : grades) {
+            String letter = grade.toLetterGrade();
             if (letter.equalsIgnoreCase("A")) {
                 cnt[0]++;
             } else if (letter.equalsIgnoreCase("B")) {
@@ -102,7 +102,7 @@ public class Grades {
         return res;
     }
 
-    // Simplest version of toString() for this method
+//     Simplest version of toString() for this method
 //    public String toString() {
 //        return grades.toString();
 //    }
@@ -111,11 +111,9 @@ public class Grades {
     public String toString() {
         StringBuilder result = new StringBuilder("[");
         for (int i = 0; i < grades.size() - 1; i++) {
-            result.append(grades.get(i).getStudent() + ":" + grades.get(i).getGrade());
-            result.append(", ");
+            result.append(grades.get(i) + ", "); // grades.get(i) automatically calls toString() method.
         }
-        result.append(grades.get(grades.size() - 1).getStudent() + ":" + grades.get(grades.size() - 1).getGrade());
-        result.append("]");
+        result.append(grades.get(grades.size() - 1) + "]");
 
         return result.toString();
     }

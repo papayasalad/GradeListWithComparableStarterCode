@@ -54,7 +54,7 @@ public class GradesClient {
                     client.calcAverage();
                     break;
                 case BREAKDOWN:
-                    client.printGradeBreakDown();
+                    client.printGradesBreakDown();
                     break;
                 case HIGHEST:
                     client.findStudentHighest();
@@ -105,9 +105,9 @@ public class GradesClient {
         System.out.print("Adding a student " + name + "\nEnter a student grade to add: ");
         String number = keyboard.next();
         try {
-            double grade = Double.parseDouble(number);
-            System.out.println("Adding grade " + grade);
-            Grade newGrade = new Grade(name, grade);
+            double score = Double.parseDouble(number);
+            System.out.println("Adding grade " + score);
+            Grade newGrade = new Grade(name, score);
             grades.addGrade(newGrade);
         } catch (NumberFormatException e) {
             System.out.println("You did not enter a valid grade: " + e.getMessage());
@@ -145,7 +145,7 @@ public class GradesClient {
         grades.printSortedGrades();
     }
 
-    private void printGradeBreakDown() {
+    private void printGradesBreakDown() {
         System.out.println("Here is a breakdown of grades.");
         grades.printGradeBreakdown();
     }

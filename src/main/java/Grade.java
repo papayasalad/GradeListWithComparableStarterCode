@@ -31,13 +31,12 @@ public class Grade implements Comparable<Grade> {
     }
 
     public String toString() {
-        StringBuilder res = new StringBuilder();
-        res.append(this.student + ":" + this.grade);
-        return res.toString();
+        return this.student + ":" + this.grade;
     }
 
     public int compareTo(Grade other) {
         // Don't forget anything else that might be missing in this class for this function to be called correctly.
+        // Has to add "implements Comparable<Grade>" in the first line of class definition
         return Double.compare(this.grade, other.grade);
     }
 
